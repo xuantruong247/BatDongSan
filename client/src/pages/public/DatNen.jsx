@@ -1,31 +1,26 @@
 import React, { useEffect, useState } from "react";
 import CarouselOutLet from "../../components/Carousel/CarouselOutLet";
 import { apiGetProducts } from "./../../apis/batDongSan";
-import { ItemDat } from "../../components";
+import { Footer, ItemDat, Pagination } from "../../components";
 
 const DatNen = () => {
   const [getProductByCategory, setGetProductByCategory] = useState([]);
 
-  const fetchProductByCategory = async () => {
-    const response = await apiGetProducts();
+  const fetchProductByCategory = async (category) => {
+    console.log(category);
+    const response = await apiGetProducts("dat-nen");
     console.log(response);
-    if (response.data.getProducts) {
-      const filteredProducts = response.data.getProducts.filter(
-        (product) => product.category === "dat-nen"
-      );
-      setGetProductByCategory(filteredProducts);
-    }
+    setGetProductByCategory(response.data.getProducts);
   };
 
   useEffect(() => {
     fetchProductByCategory();
   }, []);
-
   return (
     <div className="w-full">
       <CarouselOutLet />
       <div className="w-[1050px] mx-auto mt-20 grid grid-cols-3 gap-4 mb-20">
-        {getProductByCategory.map((product, index) => (
+        {getProductByCategory?.map((product, index) => (
           <div key={index}>
             <ItemDat
               imageThum={product.imageThum}
@@ -38,6 +33,10 @@ const DatNen = () => {
           </div>
         ))}
       </div>
+      <div className="w-[1050px] mx-auto flex justify-center my-10">
+        <Pagination totalCount={getProductByCategory?.counts} />
+      </div>
+      <Footer />
     </div>
   );
 };

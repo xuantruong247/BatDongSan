@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from "react";
 import CarouselOutLet from "../../components/Carousel/CarouselOutLet";
 import { apiGetProducts } from "../../apis/batDongSan";
-import { ItemDat } from "../../components";
+import { Footer, ItemDat, Pagination } from "../../components";
 
 const DatDuAn = () => {
   const [getProductByCategory, setGetProductByCategory] = useState([]);
-
+  const [totalCount, setTotalCount] = useState(0);
   const fetchProductByCategory = async () => {
-    const response = await apiGetProducts();
-    console.log(response);
-    if (response.data.getProducts) {
-      const filterdProducts = response.data.getProducts.filter(
-        (product) => product.category === "dat-du-an"
-      );
-      setGetProductByCategory(filterdProducts);
-    }
+    const response = await apiGetProducts("dat-du-an");
+    console.log(response.data.counts);
+    setGetProductByCategory(response.data.getProducts);
+    setTotalCount(response.data.counts);
   };
 
   useEffect(() => {
     fetchProductByCategory();
   }, []);
-
   return (
     <div className="w-full">
       <CarouselOutLet />
@@ -38,6 +33,10 @@ const DatDuAn = () => {
           </div>
         ))}
       </div>
+      <div className="w-[1050px] mx-auto flex justify-center mb-20">
+        <Pagination totalCount={totalCount} />
+      </div>
+      <Footer />
     </div>
   );
 };

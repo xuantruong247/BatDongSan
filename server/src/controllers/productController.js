@@ -46,17 +46,26 @@ const updateProduct = asyncHandler(async (req, res) => {
 
 
 const getProducts = asyncHandler(async (req, res) => {
-    const { page = 1, limit = 6, sortBy = 'views', sortOrder = 'desc', category } = req.query;
+    const { page = 1, limit = 6, category } = req.query;
+    console.log(category);
+    let query = Product.find({ category });
 
-    let query = Product.find();
 
-    // Tạo một danh sách các danh mục bạn muốn lọc
-    const categoriesToFilter = ['dat-nen', 'dat-du-an'];
+    const counts = await Product.find(query).countDocuments();
+    query = query.limit(parseInt(limit)).skip((page - 1) * limit);
 
-    // Thêm điều kiện lọc theo danh mục nếu category nằm trong danh sách categoriesToFilter
-    if (categoriesToFilter.includes(category)) {
-        query = query.where({ category });
-    }
+    const response = await query.exec();
+    return res.status(200).json({
+        success: response ? true : false,
+        counts,
+        getProducts: response ? response : "Cannot get product"
+    });
+});
+
+const getProductsSortViews = asyncHandler(async (req, res) => {
+    const { page = 1, limit = 6, sortBy = 'views', sortOrder = 'desc', } = req.query;
+
+    let query = Product.find()
 
     // Sắp xếp theo trường sortBy và sortOrder
     query = query.sort({ [sortBy]: sortOrder });
@@ -67,8 +76,8 @@ const getProducts = asyncHandler(async (req, res) => {
     const response = await query.exec();
     return res.status(200).json({
         success: response ? true : false,
-        getProducts: response ? response : "Cannot get product",
-        counts
+        counts,
+        getProducts: response ? response : "Cannot get product"
     });
 });
 
@@ -101,5 +110,6 @@ module.exports = {
     updateProduct,
     getProducts,
     getCurrentProduct,
-    deleteProduct
+    deleteProduct,
+    getProductsSortViews
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { apiGetProducts } from "./../../apis";
+import {  apiGetProductsSortViews } from "./../../apis";
 import Slider from "react-slick";
 import CardBatDongSanNoibat from "./CardBatDongSanNoibat";
 
@@ -14,7 +14,7 @@ const BatDongSanNoiBat = () => {
   };
   const [getProduct, setGetProduct] = useState([]);
   const fetchProducts = async () => {
-    const response = await apiGetProducts({
+    const response = await apiGetProductsSortViews({
       sortBy: "views",
       sortDesc: "desc",
     });

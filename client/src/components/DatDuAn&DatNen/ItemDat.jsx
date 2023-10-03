@@ -13,7 +13,6 @@ const ItemDatDuAn = ({
   description,
   product,
 }) => {
-  console.log(product);
   const navigation = useNavigate();
   return (
     <div className="w-[343px] h-[550px] rounded-lg shadow-xl cursor-pointer">

@@ -10,7 +10,7 @@ const TinTuc = () => {
     const reponse = await apiGetBlogs();
     setGetBlogs(reponse.data.getBlogs);
   };
-
+  console.log(getBlogs);
   useEffect(() => {
     fetchBlogs();
   }, []);
@@ -30,6 +30,9 @@ const TinTuc = () => {
             />
           </div>
         ))}
+      </div>
+      <div className="w-full mx-auto flex justify-center mb-10">
+        pagination
       </div>
       <Footer />
     </div>
