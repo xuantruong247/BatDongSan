@@ -1,0 +1,10 @@
+export { default as QuanLyAdmin } from "./QuanLyAdmin"
+export { default as Login } from "./Login/Login"
+export { default as QuanLyDatNen } from "./QuanLyDatNen&DatDuAn/QuanLyDatNen"
+export { default as QuanLyDatDuAn } from "./QuanLyDatNen&DatDuAn/QuanLyDatDuAn"
+export { default as UpdateDat } from "./QuanLyDatNen&DatDuAn/UpdateDat"
+
+export { default as TaoDat } from "./QuanLyDatNen&DatDuAn/TaoDat"
+export { default as QuanLyTinTuc } from "./QuanLyTinTuc/QuanLyTinTuc"
+export { default as CapNhapTinTuc } from "./QuanLyTinTuc/CapNhapTinTuc"
+export { default as TaoTinTuc } from "./QuanLyTinTuc/TaoTinTuc"

@@ -1,5 +1,5 @@
 import React from "react";
-import HeroSlider, { Slide, MenuNav } from "hero-slider";
+import HeroSlider, { Slide } from "hero-slider";
 
 const bogliasco = "https://i.imgur.com/Gu5Cznz.jpg";
 const countyClare = "https://i.imgur.com/idjXzVQ.jpg";
@@ -9,7 +9,7 @@ const giauPass = "https://i.imgur.com/8IuucQZ.jpg";
 const CarouselOutLet = () => {
   return (
     <HeroSlider
-      height={"40vh"}
+      height={"50vh"}
       autoplay
       controller={{
         initialSlide: 1,

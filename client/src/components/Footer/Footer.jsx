@@ -16,7 +16,11 @@ const Footer = () => {
 
   return (
     <div className="w-full  flex flex-col justify-center items-center">
-      <div className="flex flex-col justify-center items-center h-[400px] custom-gradient-home w-full">
+      <div
+        className="flex flex-col justify-center items-center h-[400px] custom-gradient-home w-full"
+        data-aos="fade-up"
+        data-aos-duration="3000"
+      >
         <h1 className="font-semibold sm:text-[30px] text-main">
           CÔNG TY CỔ PHẦN UNILAND
         </h1>
@@ -63,7 +67,8 @@ const Footer = () => {
       </div>
       <div className="h-[60px] w-full flex justify-center items-center">
         <h1>
-          2023 © CÔNG TY CỔ PHẦN UNILAND. ALL RIGHTS RESERVED. DEVELOPED BY XUAN TRUONG
+          2023 © CÔNG TY CỔ PHẦN UNILAND. ALL RIGHTS RESERVED. DEVELOPED BY XUAN
+          TRUONG
         </h1>
       </div>
     </div>

@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import path from "../../utils/path";
 
 const GioiThieu = () => {
   const navigate = useNavigate();
+
   return (
     <div className="flex items-center h-[500px] w-full custom-gradient-home">
       <div className="w-full flex flex-col items-center gap-4">
-        <h1 className="font-semibold text-[35px] text-main ">THÔNG ĐIỆP</h1>
-        <div className="grid grid-cols-5 w-full text-xl">
+        <h1
+          className="font-semibold text-[35px] text-main"
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+        >
+          THÔNG ĐIỆP
+        </h1>
+        <div className="grid grid-cols-5 w-full text-xl" data-aos="fade-left">
           <div className="col-span-1">
             <span className="flex justify-end mt-8 mr-8">
               <FaQuoteLeft size={65} color="white" />
@@ -21,10 +29,10 @@ const GioiThieu = () => {
                 Kính thưa Quý khách hàng, Quý đối tác và toàn thể nhân viên!
               </h1>
               <p className="text-center ">
-                Công Ty Cổ Phân Uniland được khởi dựng từ khát vọng
-                về một tập đoàn đa năng, chuyên nghiệp, với mục tiêu khẳng định
-                vị thế và thương hiệu trên thị trường bất động sản ở khu vực
-                Đông Nam Bộ nói chung và Bình Dương nói riêng.
+                Công Ty Cổ Phân Uniland được khởi dựng từ khát vọng về một tập
+                đoàn đa năng, chuyên nghiệp, với mục tiêu khẳng định vị thế và
+                thương hiệu trên thị trường bất động sản ở khu vực Đông Nam Bộ
+                nói chung và Bình Dương nói riêng.
               </p>
               <p className="text-center">
                 Với nguồn tài chính vững chắc, hướng quản trị phù hợp, cùng đội

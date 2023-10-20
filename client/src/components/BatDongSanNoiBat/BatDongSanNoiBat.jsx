@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {  apiGetProductsSortViews } from "./../../apis";
+import { apiGetProductsSortViews } from "./../../apis";
 import Slider from "react-slick";
 import CardBatDongSanNoibat from "./CardBatDongSanNoibat";
 
@@ -29,9 +29,9 @@ const BatDongSanNoiBat = () => {
 
   return (
     <div className="flex flex-col justify-center items-center border-t-2 h-[900px] w-full custom-gradient-home">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center" data-aos="fade-down-right">
         <h1 className="font-semibold text-[35px] text-main">
-          TIN TỨC BẤT ĐỘNG SẢN
+          BẤT ĐỘNG SẢN NỔI BẬT
         </h1>
         <p className="text-main">
           Tổng hợp các dự án bất động sản tại Bình Dương, Bình Phước.... các
@@ -42,11 +42,16 @@ const BatDongSanNoiBat = () => {
       <div className="w-[1050px]">
         <Slider {...settings}>
           {getProduct?.map((product, index) => (
-            <div key={index} className="custom-slide">
+            <div
+              key={index}
+              className="custom-slide"
+              data-aos="fade-up"
+              data-aos-duration="3000"
+            >
               <CardBatDongSanNoibat
                 imageThum={product?.imageThum}
                 name={product.name}
-                updatedAt={product.updatedAt}
+                createdAt={product.createdAt}
                 views={product.views}
                 description={product.description}
                 product={product}

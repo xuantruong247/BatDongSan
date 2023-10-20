@@ -7,8 +7,6 @@ import { MdLocationPin } from "react-icons/md";
 import Footer from "./../../components/Footer/Footer";
 
 const LienHe = () => {
-
-
   const hanleFacebook = () => {
     const newTab = window.open(
       "https://www.facebook.com/Nguyenthanhtra.0901201111",
@@ -31,7 +29,12 @@ const LienHe = () => {
             tôi sẽ phản hồi lại Quý khách trong thời gian sớm nhất.
           </h1>
           <div className="shadow-2xl w-5/6 h-[250px] flex flex-col items-center justify-center text-main">
-            <div className="flex flex-col items-center justify-center">
+            <div
+              className="flex flex-col items-center justify-center"
+              data-aos="fade-down"
+              data-aos-easing="linear"
+              data-aos-duration="1500"
+            >
               <b className="text-[30px]">CÔNG TY CỔ PHẦN UNILAND</b>
               <div className="flex items-center justify-center text-[17px] gap-2">
                 <span className="flex items-center gap-1 font-semibold text-main ">
@@ -63,7 +66,12 @@ const LienHe = () => {
           <h1 className="text-[35px] font-light text-main flex justify-center items-center text-center">
             MẪU THÔNG TIN LIÊN HỆ
           </h1>
-          <div className="flex flex-col gap-6 w-5/6 shadow-2xl justify-center h-[650px] px-14 py-16">
+          <div
+            className="flex flex-col gap-6 w-5/6 shadow-2xl justify-center h-[650px] px-14 py-16"
+            data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000"
+          >
             <input
               type="text"
               name="title"

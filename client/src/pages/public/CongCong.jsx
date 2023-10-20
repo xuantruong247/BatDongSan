@@ -10,7 +10,7 @@ const Publics = () => {
           height: "60px",
           position: "sticky",
           top: 0,
-          zIndex: 100,
+          zIndex: 30,
           backgroundColor: "white",
         }}
       >

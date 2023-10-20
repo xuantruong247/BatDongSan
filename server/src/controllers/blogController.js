@@ -59,9 +59,21 @@ const getBlogs = asyncHandler(async (req, res) => {
 })
 
 
+const getBlogsFeatured = asyncHandler(async (req, res) => {
+    const { page = 1, limit = 6 } = req.query
+    let query = Blog.find()
+    const counts = await Blog.find().countDocuments()
+    query = query.limit(parseInt(limit)).skip((page - 1) * limit)
+    const response = await query.exec()
+    return res.status(200).json({
+        success: response ? true : false,
+        getBlogs: response ? response : "Cannot get Blog",
+        counts
+    })
+})
+
 const getCurrentBlog = asyncHandler(async (req, res) => {
     const { bid } = req.params
-    console.log(bid);
     const blog = await Blog.findByIdAndUpdate(bid, { $inc: { numberViews: 1 } }, { new: true })
     return res.status(200).json({
         success: blog ? true : false,
@@ -86,5 +98,6 @@ module.exports = {
     updateBlog,
     getBlogs,
     getCurrentBlog,
-    deleteBlog
+    deleteBlog,
+    getBlogsFeatured
 }

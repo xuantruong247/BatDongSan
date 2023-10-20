@@ -1,21 +1,33 @@
 import React, { useEffect, useState } from "react";
 import CarouselOutLet from "../../components/Carousel/CarouselOutLet";
 import { apiGetProducts } from "../../apis/batDongSan";
-import { Footer, ItemDat, Pagination } from "../../components";
+import { Footer, ItemDat,Pagination } from "../../components";
+import { useParams } from "react-router-dom";
 
 const DatDuAn = () => {
   const [getProductByCategory, setGetProductByCategory] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
-  const fetchProductByCategory = async () => {
-    const response = await apiGetProducts("dat-du-an");
-    console.log(response.data.counts);
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(totalCount / 6);
+  const { page } = useParams();
+
+  const fetchProductByCategory = async (pageNumber) => {
+    const response = await apiGetProducts("dat-du-an", { page: pageNumber });
     setGetProductByCategory(response.data.getProducts);
     setTotalCount(response.data.counts);
+    setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
-    fetchProductByCategory();
-  }, []);
+    fetchProductByCategory(page || 1);
+  }, [page]);
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      fetchProductByCategory(newPage);
+    }
+  };
+
   return (
     <div className="w-full">
       <CarouselOutLet />
@@ -26,7 +38,7 @@ const DatDuAn = () => {
               imageThum={product.imageThum}
               name={product.name}
               views={product.views}
-              updatedAt={product.updatedAt}
+              createdAt={product.createdAt}
               description={product.description}
               product={product}
             />
@@ -34,7 +46,11 @@ const DatDuAn = () => {
         ))}
       </div>
       <div className="w-[1050px] mx-auto flex justify-center mb-20">
-        <Pagination totalCount={totalCount} />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
       </div>
       <Footer />
     </div>

@@ -4,6 +4,7 @@ const router = express.Router()
 const uploader = require("../config/cloudinary.config")
 
 router.get("/", ctrl.getBlogs)
+router.get("/featured", ctrl.getBlogsFeatured)
 router.get("/:bid", ctrl.getCurrentBlog)
 router.post("/create", uploader.fields([
     { name: "imageThum", maxCount: 1 }

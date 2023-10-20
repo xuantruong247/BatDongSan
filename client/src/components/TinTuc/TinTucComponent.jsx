@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardTinTuc from "./CardTinTuc";
-import { apiGetBlogs } from "../../apis/tinTuc";
+import { apiGetBlogsFeatured } from "../../apis/tinTuc";
 import Slider from "react-slick";
 
 const TinTucComponent = () => {
@@ -15,7 +15,7 @@ const TinTucComponent = () => {
   const [getBlog, setGetBlog] = useState([]);
 
   const fetchBlog = async () => {
-    const response = await apiGetBlogs();
+    const response = await apiGetBlogsFeatured();
     setGetBlog(response?.data?.getBlogs);
   };
 
@@ -28,6 +28,7 @@ const TinTucComponent = () => {
       <div>
         <h1
           className="font-semibold text-[35px] text-main"
+          data-aos="fade-down-left"
         >
           TIN TỨC BẤT ĐỘNG SẢN
         </h1>
@@ -36,11 +37,13 @@ const TinTucComponent = () => {
       <div className="w-[1050px]">
         <Slider {...settings}>
           {getBlog?.map((blog, index) => (
-            <CardTinTuc
-              key={index}
-              name={blog.name}
-              imageThum={blog?.imageThum}
-            />
+            <div key={index} data-aos="fade-up" data-aos-duration="3000">
+              <CardTinTuc
+                name={blog.name}
+                imageThum={blog?.imageThum}
+                blog={blog}
+              />
+            </div>
           ))}
         </Slider>
       </div>

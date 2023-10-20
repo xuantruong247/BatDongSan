@@ -34,6 +34,9 @@ const updateProduct = asyncHandler(async (req, res) => {
             req.body.imageThum = file.imageThum[0].path
         }
     }
+    if (req.body && req.body.name) {
+        req.body.slug = slugify(req.body.name);
+    }
 
     const updateFields = { ...req.body }
 
@@ -47,7 +50,6 @@ const updateProduct = asyncHandler(async (req, res) => {
 
 const getProducts = asyncHandler(async (req, res) => {
     const { page = 1, limit = 6, category } = req.query;
-    console.log(category);
     let query = Product.find({ category });
 
 

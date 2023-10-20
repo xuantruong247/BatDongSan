@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
+
   ],
   theme: {
     fontFamily: {
@@ -10,7 +11,8 @@ module.exports = {
     extend: {
       colors: {
         main: "#004835",
-        over: "#949467"
+        over: "#949467",
+        overlay: "rgba(0,0,0,0.9)"
       },
 
 
@@ -31,5 +33,7 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    "@tailwindcss/line-clamp"
+  ],
 }

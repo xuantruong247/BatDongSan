@@ -1,9 +1,17 @@
 import React from "react";
-import { AiOutlineRight } from 'react-icons/ai'
+import { AiOutlineRight } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import path from "../../utils/path";
 
-const CardTinTuc = ({ name, imageThum }) => {
+const CardTinTuc = ({ name, imageThum, blog }) => {
+  const navigate = useNavigate();
   return (
-    <div className="w-[250px] rounded-lg shadow custom-gradient hover:custom-gradient card-tintuc cursor-pointer">
+    <div
+      onClick={() => {
+        navigate(`/${path.CHI_TIET_TIN_TUC}/${blog?._id}/${name}`);
+      }}
+      className="w-[250px] rounded-lg shadow custom-gradient hover:custom-gradient  cursor-pointer"
+    >
       <div className="flex flex-col">
         <img
           src={imageThum}
@@ -14,7 +22,7 @@ const CardTinTuc = ({ name, imageThum }) => {
       </div>
       <div className="flex justify-center items-center">
         <button className="border rounded-full bg-main p-3 hover:bg-over flex items-center justify-center text-white">
-          <AiOutlineRight size={20}/>
+          <AiOutlineRight size={20} />
         </button>
       </div>
     </div>
