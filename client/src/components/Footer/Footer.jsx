@@ -15,17 +15,17 @@ const Footer = () => {
   };
 
   return (
-    <div className="w-full  flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col justify-center items-center">
       <div
         className="flex flex-col justify-center items-center h-[400px] custom-gradient-home w-full"
         data-aos="fade-up"
         data-aos-duration="3000"
       >
-        <h1 className="font-semibold sm:text-[30px] text-main">
+        <h1 className="font-semibold sm:text-[25px] text-main md:text-[30px]">
           CÔNG TY CỔ PHẦN UNILAND
         </h1>
-        <div className="flex items-center justify-center text-[17px] gap-2">
-          <span className="flex items-center gap-1 font-semibold text-main ">
+        <div className="flex items-center justify-center lg:text-[20px] gap-2 sm:text-[13px] md:text-[17px]">
+          <span className="flex items-center font-semibold text-main lg:w-[140px] md:w-[115px] sm:w-[120px]">
             <MdLocationPin />
             Trụ sở chính:
           </span>
@@ -33,8 +33,8 @@ const Footer = () => {
             158 Ngô Gia Tự, Khu 11, P. Chánh Nghĩa, TP. Thủ Dầu Một, Bình Dương.
           </p>
         </div>
-        <div className="flex items-center justify-center text-[17px] gap-2">
-          <span className="flex items-center gap-1 font-semibold text-main ">
+        <div className="flex items-center justify-center lg:text-[20px] gap-2 sm:text-[13px] md:text-[17px]">
+          <span className="flex items-center font-semibold text-main lg:w-[135px] md:w-[111px] sm:w-[120px]">
             <MdLocationPin />
             Chi nhánh 1:
           </span>
@@ -43,8 +43,8 @@ const Footer = () => {
             Bình Dương.
           </p>
         </div>
-        <div className="flex items-center justify-center text-[17px] gap-2">
-          <span className="flex items-center gap-1 font-semibold text-main ">
+        <div className="flex items-center justify-center lg:text-[20px] gap-2 sm:text-[13px] md:text-[17px]">
+          <span className="flex items-center font-semibold text-main lg:w-[135px] md:w-[114px] sm:w-[120px]">
             <MdLocationPin />
             Chi nhánh 2:
           </span>
@@ -52,7 +52,7 @@ const Footer = () => {
             Số 1338 Phạm Văn Đồng, P. Linh Tây, TP. Thủ Đức, TP.HCM.
           </p>
         </div>
-        <div className="flex items-center justify-center text-[17px] gap-2">
+        <div className="flex items-center justify-center lg:text-[20px] gap-2 md:text-[19px] sm:text-[18px]">
           <span className="flex items-center gap-1 font-semibold text-main ">
             <BsFillTelephoneFill />
             Phone
@@ -65,7 +65,7 @@ const Footer = () => {
           </span>
         </button>
       </div>
-      <div className="h-[60px] w-full flex justify-center items-center">
+      <div className="h-[60px] w-full flex justify-center items-center sm:text-center">
         <h1>
           2023 © CÔNG TY CỔ PHẦN UNILAND. ALL RIGHTS RESERVED. DEVELOPED BY XUAN
           TRUONG
