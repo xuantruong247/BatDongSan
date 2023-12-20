@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CarouselOutLet from "../../components/Carousel/CarouselOutLet";
 import van_phong from "../../assets/images/van_phong.jpg";
 import nhan_su_1 from "../../assets/images/nhan_su_1.jpg";
@@ -7,12 +7,17 @@ import { BsSquareFill } from "react-icons/bs";
 import Footer from "../../components/Footer/Footer";
 import { useLocation } from "react-router-dom";
 import ModalTuyenDung from "./../../components/Common/ModalTuyenDung";
+import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
 const TuyenDung = () => {
   const location = useLocation();
   const [showModal, setShowModal] = useState(
     location.pathname === "/tuyen-dung"
   );
+
+  const form = useRef();
+  const [fileName, setFileName] = useState("");
 
   useEffect(() => {
     if (showModal) {
@@ -34,6 +39,40 @@ const TuyenDung = () => {
   const handleModalClick = (e) => {
     e.stopPropagation(); // Ngăn chặn sự kiện click từ việc lan truyền ra ngoài
   };
+
+  const sendMailTuyenDung = (e) => {
+    e.preventDefault();
+    const formData = new FormData(form.current);
+    emailjs
+      .sendForm(
+        "service_k8kaoei",
+        "template_xewqbkd",
+        formData,
+        "qmvmtadcY7h0bX27N"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          console.log("message sent");
+          // setIsLoading(false);
+          if (result) {
+            Swal.fire({
+              icon: "success",
+              text: "Send email successfully",
+            });
+          }
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFileName(file.name); // Lưu tên file vào state để hiển thị
+  };
+
   return (
     <div className="w-full">
       {showModal && (
@@ -51,7 +90,7 @@ const TuyenDung = () => {
       )}
       <div className="relative">
         <CarouselOutLet />
-        <div className="w-[1050px] mx-auto px-[20px] mt-32 text-main">
+        <div className="lg:w-[1050px] lg:mx-auto lg:px-[20px] lg:mt-32 text-main">
           <div className="flex flex-col gap-10 text-[19px] mb-10">
             <h1 className=" font-bold text-3xl text-center">
               MÔI TRƯỜNG LÀM VIỆC .
@@ -252,15 +291,21 @@ const TuyenDung = () => {
             <h1 className=" font-bold text-3xl text-center">
               ĐIỀN THÔNG TIN NỘP ĐƠN
             </h1>
-            <div className="w-3/4 mx-auto flex flex-col gap-2">
+            <form
+              onSubmit={sendMailTuyenDung}
+              ref={form}
+              className="w-3/4 mx-auto flex flex-col gap-2"
+            >
               <div className="flex gap-2">
                 <input
                   type="text"
+                  name="hoVaTen"
                   placeholder="Họ và tên (*)"
                   className="bg-gray-50 w-2/5 p-2 border"
                 />
                 <input
                   type="text"
+                  name="email"
                   placeholder="Email (*)"
                   className="bg-gray-50 w-2/5 p-2 border"
                 />
@@ -268,6 +313,7 @@ const TuyenDung = () => {
               <div className="flex gap-2">
                 <input
                   type="number"
+                  name="soDienThoai"
                   placeholder="Điện thoại (*)"
                   className="bg-gray-50 w-2/5 p-2 border"
                 />
@@ -276,20 +322,31 @@ const TuyenDung = () => {
                     className="bg-gray-50 w-[303px] p-1 border cursor-pointer flex items-center justify-between"
                     htmlFor="uploadFile"
                   >
-                    <span className="text-gray-400 px-1">
-                      File hồ sơ của bạn
-                    </span>
+                    {fileName ? (
+                      fileName
+                    ) : (
+                      <span className="text-gray-400 px-1">
+                        File hồ sơ của bạn
+                      </span>
+                    )}
                     <button className="bg-red-600 text-white p-1 transition-all duration-500">
                       BROWSER
                     </button>
                   </label>
-                  <input hidden type="file" id="uploadFile" required />
+                  <input
+                    type="file"
+                    hidden
+                    name="fileTuyenDung"
+                    id="uploadFile"
+                    required
+                    onChange={handleFileChange}
+                  />
                 </div>
               </div>
               <button className="bg-green-600 hover:bg-red-600 w-[100px] py-1 text-white transition-all duration-500">
                 NỘP ĐƠN
               </button>
-            </div>
+            </form>
           </div>
         </div>
         <Footer />

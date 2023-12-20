@@ -1,7 +1,7 @@
 import axios from "../axios"
 
 export const apiLogin = (data) => axios({
-    url: "/blog/",
-    mothod: "get",
+    url: '/user/login',
+    method: 'post',
     data
 })

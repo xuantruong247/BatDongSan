@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import path from "../../../utils/path";
 import logo from "../../../assets/images/logo.png";
@@ -7,19 +7,15 @@ import { apiLogin } from "../../../apis/user";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
-
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
   const handleLogin = async (data) => {
+    console.log(data, "data");
     const response = await apiLogin(data);
     console.log(response);
-    if (response) {
+
+    if (response.data.success) {
       const userData = {
         username: data.username,
       };
@@ -34,7 +30,7 @@ const Login = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Sai tài khoản hoặc mật khẩu!",
+        text: response.data.message,
       });
     }
   };
@@ -61,14 +57,10 @@ const Login = () => {
               </label>
               <input
                 type="text"
-                name="username"
-                id="username"
-                {...register("username")}
+                name="userName"
+                id="userName"
+                {...register("userName")}
                 className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline focus:shadow-md focus:border-sky-300 focus:shadow-sky-300"
-                value={username}
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                }}
               />
             </div>
             <div>
@@ -81,10 +73,6 @@ const Login = () => {
                 id="password"
                 {...register("password")}
                 className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline focus:shadow-md focus:border-sky-300 focus:shadow-sky-300"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
               />
             </div>
             <button
@@ -106,7 +94,7 @@ const Login = () => {
             }}
           >
             Công ty cổ phẩn Uniland
-          </span>{" "}
+          </span>
           All rights reserved.
         </p>
       </div>

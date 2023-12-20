@@ -80,7 +80,7 @@ const AdminSidebar = () => {
           <button
             onClick={() => {
               localStorage.removeItem("userData");
-              navigate(`/${path.LOGIN}`);
+              window.location.reload(`/${path.LOGIN}`);
             }}
             className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md"
           >

@@ -54,7 +54,7 @@ const TinTucComponent = () => {
         </h1>
         <p className="border-b border-black w-2/5 ml-28 my-4 sm:ml-14"></p>
       </div>
-      <div className="lg:w-[1050px] md:w-[800px] sm:w-[250px]">
+      <div className="lg:w-[1050px] md:w-[770px] sm:w-[250px]">
         <Slider {...settings}>
           {getBlog?.map((blog, index) => (
             <div key={index} data-aos="fade-up" data-aos-duration="3000">

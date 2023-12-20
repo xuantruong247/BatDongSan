@@ -31,7 +31,7 @@ const DatNen = () => {
   return (
     <div className="w-full">
       <CarouselOutLet />
-      <div className="w-[1050px] mx-auto mt-20 grid grid-cols-3 gap-4 mb-20">
+      <div className="lg:w-[1050px] sm:w-[425px] lg:mx-auto lg:mt-20 grid lg:grid-cols-3 lg:gap-4 lg:mb-20 sm:grid-cols-1 sm:pl-10 md:w-[768px] md:grid-cols-2 md:pl-7 md:mt-10 sm:mt-6">
         {getProductByCategory.map((product, index) => (
           <div key={index}>
             <ItemDat
@@ -45,7 +45,7 @@ const DatNen = () => {
           </div>
         ))}
       </div>
-      <div className="w-[1050px] mx-auto flex justify-center mb-20">
+      <div className="lg:w-[1050px] lg:mx-auto flex justify-center lg:mb-20 sm:w-[425px] sm:my-5 md:w-[768px] md:my-8">
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}

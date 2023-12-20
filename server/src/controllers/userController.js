@@ -14,14 +14,20 @@ const CreateUser = asyncHandler(async (req, res) => {
 
 const login = asyncHandler(async (req, res) => {
     const { userName, password } = req.body
+    console.log(req.body);
+    const isUser = await User.findOne({ userName, password })
 
-    const isUser = await User.findOne({ userName })
-
-    if (!isUser) throw new Error("User not found")
-
-    return res.status(200).json({
-        message: "Login Successfully"
-    })
+    if (!isUser || !password) {
+        return res.status(404).json({
+            success: false,
+            message: "Wrong UserName or Password"
+        })
+    } else {
+        return res.status(200).json({
+            success: true,
+            message: "Login Successfully"
+        })
+    }
 })
 
 module.exports = {

@@ -34,7 +34,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="flex items-center justify-center lg:text-[20px] gap-2 sm:text-[13px] md:text-[17px]">
-          <span className="flex items-center font-semibold text-main lg:w-[135px] md:w-[111px] sm:w-[120px]">
+          <span className="flex items-center font-semibold text-main lg:w-[135px] md:w-[111px] sm:w-[130px]">
             <MdLocationPin />
             Chi nhánh 1:
           </span>
@@ -44,7 +44,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="flex items-center justify-center lg:text-[20px] gap-2 sm:text-[13px] md:text-[17px]">
-          <span className="flex items-center font-semibold text-main lg:w-[135px] md:w-[114px] sm:w-[120px]">
+          <span className="flex items-center font-semibold text-main lg:w-[135px] md:w-[114px] sm:w-[95px]">
             <MdLocationPin />
             Chi nhánh 2:
           </span>
@@ -57,7 +57,7 @@ const Footer = () => {
             <BsFillTelephoneFill />
             Phone
           </span>
-          <p className="text-main">0901 20 11 11</p>
+          <p className="text-main">0938 00 07 07</p>
         </div>
         <button onClick={hanleFacebook} className="btn btn-5 hover-border-11">
           <span>
